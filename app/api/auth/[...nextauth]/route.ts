@@ -9,7 +9,7 @@ import prismadb from "@/app/libs/prismadb";
 
 /* https://next-auth.js.org/configuration/initialization#route-handlers-app */
 
-const authHandler: AuthOptions = NextAuth({
+export const authOptions: AuthOptions = {
 	adapter: PrismaAdapter(prismadb),
 	providers: [
 		GoogleProvider({
@@ -59,7 +59,7 @@ const authHandler: AuthOptions = NextAuth({
 		}),
 	],
 	pages: {
-		signIn: "/auth",
+		signIn: "/",
 	},
 	session: {
 		strategy: "jwt",
@@ -69,6 +69,8 @@ const authHandler: AuthOptions = NextAuth({
 	},
 	secret: process.env.NEXTAUTH_SECRET,
 	debug: process.env.NODE_ENV === "development",
-});
+};
+
+const authHandler = NextAuth(authOptions);
 
 export { authHandler as GET, authHandler as POST };

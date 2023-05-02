@@ -5,10 +5,11 @@ interface InputProps {
 	value: string;
 	label: string;
 	type?: string;
+	required?: boolean;
 	onChange: (e: any) => void;
 }
 
-const Input: React.FC<InputProps> = ({ id, value, label, type = "text", onChange }) => {
+const Input: React.FC<InputProps> = ({ id, value, label, type = "text", required, onChange }) => {
 	return (
 		<div className="relative">
 			<input
@@ -17,6 +18,7 @@ const Input: React.FC<InputProps> = ({ id, value, label, type = "text", onChange
 				id={id}
 				type={type}
 				value={value}
+				required={required}
 				onChange={onChange}
 			/>
 			<label
