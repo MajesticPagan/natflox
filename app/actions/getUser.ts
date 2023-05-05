@@ -20,6 +20,7 @@ export default async function getUser(params: getUserProps) {
 
 		return user;
 	} catch (error: any) {
-		return null;
+		console.error(error);
+		return;
 	}
 }

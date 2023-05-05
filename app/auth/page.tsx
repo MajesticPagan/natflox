@@ -74,7 +74,7 @@ const AuthPage = () => {
 	if (session) {
 		return (
 			<>
-				<h2 className="text-white text-3xl mb-8 font-semibold">{`Sessão iniciada com ${session?.user?.name}`}</h2>
+				<h2 className="text-white text-3xl mb-8 font-bold">{`Sessão iniciada com ${session?.user?.name}`}</h2>
 				<div className="flex flex-col items-center justify-center gap-4 mt-8">
 					<button
 						type="submit"
@@ -85,7 +85,7 @@ const AuthPage = () => {
 					</button>
 					<button
 						type="button"
-						className="relative p-3 rounded-md w-full flex items-center justify-center gap-2 text-sm font-semibold transition text-gray-300 border-2 border-gray-300"
+						className="relative p-3 rounded-md w-full flex items-center justify-center gap-2 text-sm font-medium transition text-gray-300 border-2 border-gray-300"
 						onClick={() => signOut()}
 					>
 						Terminar sessão
@@ -97,7 +97,7 @@ const AuthPage = () => {
 
 	return (
 		<>
-			<h2 className="text-white text-4xl mb-8 font-semibold">
+			<h2 className="text-white text-4xl mb-8 font-bold">
 				{variant === "login" ? "Iniciar sessão" : "Registrar"}
 			</h2>
 			<form
@@ -140,19 +140,19 @@ const AuthPage = () => {
 			<div className="flex flex-col items- justify-center gap-4 mt-8">
 				<button
 					type="button"
-					className="relative p-3 rounded-md w-full flex items-center justify-center gap-2 text-sm font-semibold transition text-gray-300 border-2 border-gray-300"
+					className="relative p-3 rounded-md w-full flex items-center justify-center gap-2 text-sm font-medium transition text-gray-300 border-2 border-gray-300"
 					onClick={() => signIn("google", { callbackUrl: "/profiles" })}
 				>
 					<FcGoogle className="absolute top-3 left-3" size={18} />
-					Entrar com a Google
+					{`${variant === "login" ? "Entrar" : "Registrar"} com a Google`}
 				</button>
 				<button
 					type="button"
-					className="relative p-3 rounded-md w-full flex items-center justify-center gap-2 text-sm font-semibold transition text-gray-300 border-2 border-gray-300"
+					className="relative p-3 rounded-md w-full flex items-center justify-center gap-2 text-sm font-medium transition text-gray-300 border-2 border-gray-300"
 					onClick={() => signIn("github", { callbackUrl: "/profiles" })}
 				>
 					<FaGithub className="absolute top-3 left-3" size={18} />
-					Entrar com o Github
+					{`${variant === "login" ? "Entrar" : "Registrar"} com o Github`}
 				</button>
 			</div>
 			<p className="text-neutral-500 mt-10">

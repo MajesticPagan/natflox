@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import { BsSearch, BsBell } from "react-icons/bs";
 
 import { menuItems, menuItemsProps } from "@/app/constants";
+import { multipleEventListener } from "@/app/libs/helpers";
 
 import Logo from "./Logo";
 import NavbarItem from "./NavbarItem";
@@ -21,10 +22,10 @@ const Navbar = () => {
 			setIsNavbarFixed((currentState) => window.scrollY >= TOP_OFFSET);
 		};
 
-		window.addEventListener("scroll", handleScroll);
+		multipleEventListener("add", ["load", "scroll"], window, handleScroll);
 
 		return () => {
-			window.removeEventListener("scroll", handleScroll);
+			multipleEventListener("remove", ["load", "scroll"], window, handleScroll);
 		};
 	}, []);
 

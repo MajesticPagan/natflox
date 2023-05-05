@@ -34,6 +34,6 @@ export default async function getCurrentUser() {
 		};
 	} catch (error: any) {
 		console.error(error);
-		return null;
+		return;
 	}
 }

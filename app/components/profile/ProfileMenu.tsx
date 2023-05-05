@@ -1,7 +1,7 @@
 "use client";
 
 import { useCallback, useState } from "react";
-import { signOut } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 
 import { BsChevronDown } from "react-icons/bs";
 
@@ -9,6 +9,7 @@ import Image from "next/image";
 
 const ProfileMenu = () => {
 	const [isVisible, setIsVisible] = useState(false);
+	const session = useSession();
 
 	const handleMenuClick = useCallback((event: React.MouseEvent) => {
 		setIsVisible((currentState) => !currentState);
@@ -41,7 +42,7 @@ const ProfileMenu = () => {
 								className="w-9 rounded-md"
 							/>
 							<p className="text-white text-sm group-hover/item:underline">
-								Utilizador
+								{session?.data?.user?.name}
 							</p>
 						</div>
 						<hr className="bg-gray-600 border-0 h-px my-4" />

@@ -4,11 +4,17 @@ const nextConfig = {
 		appDir: true,
 	},
 	images: {
-		domains: [
-			"avatars.githubusercontent.com",
-			"lh3.googleusercontent.com",
-			"res.cloudinary.com",
+		remotePatterns: [
+			{
+				protocol: "https",
+				hostname: "**.googleusercontent.com",
+			},
+			{
+				protocol: "https",
+				hostname: "**.blender.org",
+			},
 		],
+		domains: ["avatars.githubusercontent.com", "uhdtv.io", "upload.wikimedia.org"],
 	},
 };
 

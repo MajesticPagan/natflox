@@ -1,8 +1,12 @@
 import { Roboto } from "next/font/google";
 
 import AuthSessionProvider from "./components/providers/AuthSessionProvider";
-import ClientOnly from "./components/ClientOnly";
 import ToasterProvider from "./components/providers/ToasterProvider";
+
+import getCurrentUser from "./actions/getCurrentUser";
+
+import ClientOnly from "./components/ClientOnly";
+import InfoModal from "./components/InfoModal";
 
 import "./globals.css";
 
@@ -17,12 +21,15 @@ export const metadata = {
 	description: "Netflix type app clone.",
 };
 
-export default function RootLayout({ children }: { children: React.ReactNode }) {
+const RootLayout = async ({ children }: { children: React.ReactNode }) => {
+	const currentUser = await getCurrentUser();
+
 	return (
 		<html lang="en" className={`h-full ${roboto.className}`}>
 			<body className="bg-zinc-900 h-full overflow-x-hidden">
 				<AuthSessionProvider>
 					<ClientOnly>
+						<InfoModal currentUser={currentUser} />
 						<ToasterProvider />
 					</ClientOnly>
 					{children}
@@ -30,4 +37,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 			</body>
 		</html>
 	);
-}
+};
+
+export default RootLayout;
